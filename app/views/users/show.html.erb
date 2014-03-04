@@ -1,0 +1,28 @@
+<div id="createbark" class="panel right">
+    <h1>Create a Bark</h1>
+    <p>
+    <form>
+        <textarea name="text" class=”barkText"></textarea>
+        <input type="submit" value=”bark">
+    </form>
+    </p>
+</div>
+
+<div id=”barks" class="panel left">
+    <h1>Your Bark Profile</h1>
+    <div class=”barkWrapper">
+        <img class="avatar" src="<%= @user.avatar_url %>">
+        <span class="name"><%= @user.name %></span> @<%= @user.username %>
+        <p>
+        <span class="spacing">XX Followers</span>
+        <span class="spacing">XX Following</span>
+        </p>
+    </div>
+</div>
+
+<div class="panel left">
+    <h1>Your Barks</h1>
+    <div class=”barkWrapper">
+        Barks coming . . .
+    </div>
+</div>
