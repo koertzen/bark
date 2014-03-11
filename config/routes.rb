@@ -1,6 +1,6 @@
 Bark::Application.routes.draw do
   get "sessions/new"
-  get "sessions/create"
+  post "sessions/create"
   get "sessions/destroy"
   resources :users
 
