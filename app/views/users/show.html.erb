@@ -1,0 +1,71 @@
+<div class="row”>
+
+  <div class="col-md-6">
+
+    <div class="panel panel-primary">
+
+      <div class="panel-heading">
+
+        Here's your Profile <%= @user.name %>
+
+      </div>
+
+      <div class="panel-body">
+
+        <img class="avatar" src="<%= @user.avatar_url %>">
+
+        <span class="name"><%= @user.name %></span> @<%= @user.username %>
+
+        <br><br>
+
+        <p>
+        <span class="spacing"> <%= @user.woofs.count %>Woofs| </span>
+        
+
+        <span class="spacing">XX Followers |</span>
+
+        <span class="spacing">XX Following</span>
+
+        </p>
+
+      </div>
+
+    </div>    
+
+  </div>
+
+<% if current_user %>
+  <div class="col-md-5">
+    <div class="panel panel-success">
+      <div class="panel-heading">Create a Bark</div>
+      <div class="panel-body">
+        <%= form_for @woof do |f| %>
+          <%= f.text_area :content, class: 'barkText col-md-12' %>
+          <%= f.submit "Woof!", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h1>Your Woofs</h1>
+<% @user.woofs.each do |woof| %>
+  <div class="row">
+    <div class="well col-md-6">
+        <%= woof.content %> <br>
+        <h6 class="pull-right"><%= time_ago_in_words(woof.created_at) %> ago</h6></div>
+  </div>
+<% end %>
+
+
+
+<div class="row">
+
+  <div class="well col-md-6">
+
+      this will be a bark
+
+  </div>
+
+</div>
