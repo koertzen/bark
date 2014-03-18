@@ -1,0 +1,62 @@
+<div class="jumbotron">
+
+  <h1>Welcome to Bark</h1>
+
+  <p>what the woof ...</p>
+
+  <p><a class="btn btn-primary btn-lg" role="button">login</a> or sign up below</p>
+
+</div>
+
+
+
+
+<div class="row">
+
+  <div class="col-md-6">
+
+    <%= image_tag 'Dog.jpg', size: "600x350", alt: "Bark" %>
+
+  </div>
+
+  <div class="col-md-6 pull-right">
+
+   <!-- <form role="form" class="form-horizontal"> -->
+
+     <%= form_for @user do |f| %>
+
+        <% if @user.errors.any? %>
+
+          <ul>
+
+            <% @user.errors.full_messages.each do |message| %>
+
+              <li><%= message %></li>
+
+            <% end %>
+
+          </ul>
+
+        <% end %>
+
+      <div class="form-group col-md-8"><%= f.text_field :email, placeholder: "email", class: 'form-control'%></div>
+
+         
+
+      <div class="form-group col-md-8"><%= f.text_field :username, placeholder: "username", class: 'form-control'%></div>
+
+      <div class="form-group col-md-8"><%= f.text_field :name, placeholder: "full name", class: 'form-control'%></div>
+
+      <div class="form-group col-md-8"><%= f.password_field :password, placeholder: "password", class: 'form-control'  %></div>
+
+      <div class="form-group col-md-8"><%= f.password_field :password_confirmation, placeholder: "confirm password", class: 'form-control'  %></div>
+
+      <div class="form-group col-md-8"><%= f.submit "Create Account" , class: 'btn btn-primary btn-lg'%></div>
+
+      <% end %>
+
+   <!-- </form> -->      
+
+  </div>
+
+</div>

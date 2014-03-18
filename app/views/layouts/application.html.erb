@@ -3,12 +3,27 @@
 <head>
   <title>Bark</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
 <body>
 
-<%= yield %>
+
+<% if current_user %>
+    <%= link_to "Log Out", sessions_destroy_path %>
+<% else %>
+    <%= form_tag sessions_create_path do %>
+        <%= text_field_tag :username, nil, placeholder: "username" %>
+        <%= password_field_tag :password, nil,  placeholder: "password" %>
+        <%= submit_tag "Log In" %>
+    <% end %>
+<% end %>
+
+
+<div class='container'>
+	<%= yield %>
+	<%= link_to "Public Woofs", woofs_path, class: "btn btn-success" %>
+</div>
 
 </body>
 </html>
