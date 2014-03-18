@@ -1,4 +1,4 @@
-<div class="row”>
+<div class="row">
 
   <div class="col-md-6">
 
@@ -19,7 +19,7 @@
         <br><br>
 
         <p>
-        <span class="spacing">  <%= @user.woofs.count %>Woofs|  </span>
+        <span class="spacing"> <%= @user.woofs.count %>Woofs| </span>
         
 
         <span class="spacing">XX Followers |</span>
@@ -34,39 +34,30 @@
 
   </div>
 
-<%  if  current_user  %>
+<% if current_user %>
   <div class="col-md-5">
-
     <div class="panel panel-success">
-
       <div class="panel-heading">Create a Bark</div>
-
       <div class="panel-body">
-
-       <%=  form_for  @woof do  |f| %>  
-                    <%= f.text_area :content, class:  'barkText col-md-12'  %>  
-                    <%= f.submit  "Woof!",  class:  "btn  btn-success"  %>  
-                <%  end %>
-
+        <%= form_for @woof do |f| %>
+          <%= f.text_area :content, class: 'barkText col-md-12' %>
+          <%= f.submit "Woof!", class: "btn btn-success" %>
+        <% end %>
       </div>
-
     </div>
-
   </div>
-
 </div>
 
 
-
-
-<h1>Your Woofs</h1>  
-<%  @user.woofs.each  do  |woof|  %>  
-    <div  class="row">  
-        <div  class="well col-md-6">  
-                <%= woof.content  %>  <br>  
-                <h6 class="pull-right"><%=  Hme_ago_in_words(woof.created_at) %>  ago</h6></div>  
-    </div>  
-<%  end %>
+  <h1>Your Woofs</h1>
+  <% @user.woofs.reverse_each do |woof| %>
+    <div class="row">
+      <div class="well col-md-6">
+          <%= woof.content %> <br>
+          <h6 class="pull-right"><%= time_ago_in_words(woof.created_at) %> ago</h6></div>
+    </div>
+  <% end %>
+<% end %>
 
 
 <div class="row">
