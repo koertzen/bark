@@ -1,40 +1,23 @@
 <div class="row">
-
   <div class="col-md-6">
-
     <div class="panel panel-primary">
-
       <div class="panel-heading">
-
         Here's your Profile <%= @user.name %>
-
       </div>
-
       <div class="panel-body">
-
         <img class="avatar" src="<%= @user.avatar_url %>">
-
         <span class="name"><%= @user.name %></span> @<%= @user.username %>
-
         <br><br>
-
         <p>
         <span class="spacing"> <%= @user.woofs.count %>Woofs| </span>
-        
-
         <span class="spacing">XX Followers |</span>
-
         <span class="spacing">XX Following</span>
-
         </p>
-
       </div>
-
     </div>    
-
   </div>
 
-<% if current_user %>
+<% if current_user && current_user == @user  %>
   <div class="col-md-5">
     <div class="panel panel-success">
       <div class="panel-heading">Create a Bark</div>

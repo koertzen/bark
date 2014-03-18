@@ -1,0 +1,27 @@
+<% if current_user %>
+<div id="createWoof" class="panel right">
+    <h1>Create a Woof</h1>
+    <p>
+    <%= form_for @woof do |f| %>
+        <%= f.text_area :content, class: 'woofText' %>
+        <%= f.submit "woof!" %>
+    <% end %>
+    </p>
+</div>
+<% end %>
+
+<div class="panel left">
+  <h1>Public woofs</h1>
+  <% @woofs.each do |woof| %>
+    <div class="row">
+        <div class="well col-md-6">
+        <a href="<%= user_path woof.user %>">
+        <img class="avatar" src="<%= woof.user.avatar_url %>">
+        <span class="name"><%= woof.user.name %></span> 
+        </a>
+            <h4><%= woof.content %></h4> 
+            <h6 class="pull-right"><%= time_ago_in_words(woof.created_at) %> ago</h6>
+        </div>
+      </div>
+  <% end %>
+</div>
